@@ -52,14 +52,14 @@ module.exports = function (RED) {
     function DataIn(n) {
         RED.nodes.createNode(this, n);
         this.collection = RED.nodes.getNode(n.collection);
-        this.dataPath = n.path;
+        this.topic = n.topic;
         this.override = !n.update;
         var node = this;
 
         this.on("input", function (msg) {
-            var path = msg.datapath || node.dataPath;
+            var topic = msg.topic || node.topic;
             try {
-                node.collection.db.push(path, msg.payload, node.override);
+                node.collection.db.push(topic, msg.payload, node.override);
             } catch (error) {
                 node.error(error);
             }
@@ -76,20 +76,21 @@ module.exports = function (RED) {
          * @var JsonDB
          */
         this.collection = RED.nodes.getNode(n.collection);
-        this.dataPath = n.path;
+        this.topic = n.topic;
         this.sendError = n.error;
         var node = this;
 
         this.on("input", function (msg) {
-            var path = msg.datapath || node.dataPath;
+            var topic = msg.topic || node.topic;
             try {
-                var data = node.collection.db.getData(path);
+                var data = node.collection.db.getData(topic);
                 msg.payload = data;
                 node.status({fill: "green", shape: "dot", text: "No Error"});
                 node.send(msg);
             } catch (error) {
                 if (node.sendError) {
                     msg.error = error.toString();
+                    msg.topic = topic;
                     node.send(msg);
                     node.status({fill: "yellow", shape: "ring", text: error.toString()});
                 } else {

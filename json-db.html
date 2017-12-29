@@ -21,11 +21,11 @@
     </div>
     <div class="form-row">
         <label for="node-input-name"><i class="icon-flag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Node-RED">
+        <input type="text" id="node-input-name" placeholder="">
     </div>
     <div class="form-row">
-        <label for="node-input-path"><i class="icon-floppy-save"></i> Data Path</label>
-        <input type="text" id="node-input-path" placeholder="/">
+        <label for="node-input-path"><i class="icon-floppy-save"></i> Topic</label>
+        <input type="text" id="node-input-topic" placeholder="">
     </div>
     <div class="form-row">
         <input type="checkbox" style="display: inline-block; width: auto; vertical-align: top;" id="node-input-update" />
@@ -46,8 +46,8 @@
         <input type="text" id="node-input-name" placeholder="Node-RED">
     </div>
     <div class="form-row">
-        <label for="node-input-path"><i class="icon-floppy-save"></i> Data Path</label>
-        <input type="text" id="node-input-path" placeholder="/">
+        <label for="node-input-path"><i class="icon-floppy-save"></i> Topic</label>
+        <input type="text" id="node-input-topic" placeholder="">
     </div>
     <div class="form-row">
         <input type="checkbox" style="display: inline-block; width: auto; vertical-align: top;" id="node-input-error" />
@@ -147,7 +147,7 @@ be able to see directly the last Error message on top of the node.</p>
             collection: {type: "json-db-collection", required: true},
             name: {value: ""},
             update: {value: false, required: true},
-            path: {value: '/', required: true}
+            topic: {value: '' }
         },
         color: "#6699FF",
         inputs: 1,
@@ -155,7 +155,7 @@ be able to see directly the last Error message on top of the node.</p>
         icon: "json-db-in.png",
         align: "right",
         label: function () {
-            return this.name || this.path;
+            return this.name || this.topic;
         },
         labelStyle: function () {
             return this.name ? "node_label_italic" : "";
@@ -167,7 +167,7 @@ be able to see directly the last Error message on top of the node.</p>
         defaults: {
             collection: {type: "json-db-collection", required: true},
             name: {value: ""},
-            path: {value: '/', required: true},
+            topic: {value: ""},
             error: {value: false, required: true}
         },
         color: "#6699FF",
@@ -175,7 +175,7 @@ be able to see directly the last Error message on top of the node.</p>
         outputs: 1,
         icon: "json-db-out.png",
         label: function () {
-            return this.name || this.path;
+            return this.name || this.topic;
         },
         labelStyle: function () {
             return this.name ? "node_label_italic" : "";

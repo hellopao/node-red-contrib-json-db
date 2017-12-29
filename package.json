@@ -1,19 +1,19 @@
 {
-    "name": "json-db-node-red",
-    "version": "0.5.3",
+    "name": "node-red-contrib-json-db",
+    "version": "0.6.0",
     "description": "Node-RED Node to store/retrieve easily information stored into .json file",
     "repository": {
         "type": "git",
-        "url": "git@github.com:Belphemur/json-db-node-red.git"
+        "url": "git@github.com:japikas/node-red-contrib-json-db.git"
     },
     "keywords": [
         "data",
         "node-red",
         "json"
     ],
-    "author": "Antoine Aflalo <antoineaf+npm@admincmd.com>",
+    "author": "Jaakko Ala-Paavola <jap@iki.fi>",
     "license": "GPLv3",
-    "homepage": "https://github.com/Belphemur/json-db-node-red",
+    "homepage": "https://github.com/japikas/node-red-contrib-json-db",
     "dependencies": {
         "node-json-db": "0.7.x"
     },

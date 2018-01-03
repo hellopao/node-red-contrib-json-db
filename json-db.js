@@ -57,8 +57,13 @@ module.exports = function (RED) {
         var node = this;
 
         this.on("input", function (msg) {
-            var topic = msg.topic || node.topic;
-            try {
+	    var topic = "";
+	    if ( !msg.topic || msg.topic == "" ) 
+	        topic = node.topic;
+	    else
+		topic = msg.topic;
+
+	    try {
                 node.collection.db.push(topic, msg.payload, node.override);
             } catch (error) {
                 node.error(error);
@@ -81,7 +86,12 @@ module.exports = function (RED) {
         var node = this;
 
         this.on("input", function (msg) {
-            var topic = msg.topic || node.topic;
+	    var topic = "";
+	    if ( !msg.topic || msg.topic == "" )
+		topic = node.topic;
+	    else
+	        topic = msg.topic;
+
             try {
                 var data = node.collection.db.getData(topic);
                 msg.payload = data;

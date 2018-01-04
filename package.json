@@ -19,7 +19,7 @@
   },
   "node-red": {
     "nodes": {
-      "json-db": "json-db.js"
+      "node-red-contrib-json-db": "json-db.js"
     }
   }
 }
